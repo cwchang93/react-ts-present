@@ -2,6 +2,8 @@ import React from "react";
 import Header from "./Header";
 import GroupList from "./GroupList";
 
+import { Provider } from "../../context/context";
+
 class VoteSample extends React.Component {
   state = {
     total: 0
@@ -16,10 +18,17 @@ class VoteSample extends React.Component {
 
   render() {
     return (
-      <div>
-        <Header total={this.state.total} />
-        <GroupList add={this.add} />
-      </div>
+      <Provider
+        value={{
+          add: this.add,
+          state: this.state
+        }}
+      >
+        <div>
+          <Header total={this.state.total} />
+          <GroupList />
+        </div>
+      </Provider>
     );
   }
 }

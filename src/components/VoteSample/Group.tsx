@@ -1,17 +1,25 @@
 import React from "react";
+import { Consumer } from "../../context/context";
 
 interface I_Props {
   name: string;
-  add?: () => void;
+  add?: any;
 }
 
 class Group extends React.Component<I_Props> {
   render() {
     return (
-      <div style={{ display: "flex" }}>
-        <li>{this.props.name}</li>
-        <button onClick={this.props.add}>+</button>
-      </div>
+      <Consumer>
+        {consumerProps => {
+          console.log("consumerProps", consumerProps);
+          return (
+            <div style={{ display: "flex" }}>
+              <li>{this.props.name}</li>
+              <button onClick={() => consumerProps.add()}>+</button>
+            </div>
+          );
+        }}
+      </Consumer>
     );
   }
 }

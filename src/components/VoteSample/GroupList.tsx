@@ -20,7 +20,7 @@ class GroupList extends React.Component<I_Props> {
     ];
 
     return f2eGroup.map((ele: I_f2eGroup) => {
-      return <Group name={ele.team} add={this.props.add} />;
+      return <Group name={ele.team} />;
     });
   }
 }
